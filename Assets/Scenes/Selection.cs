@@ -8,6 +8,10 @@ public class Selection : MonoBehaviour
     CardSelected = ;
     void Update()
     {
-        Keyboard
+        Keyboard();
+    }
+    void Keyboard()
+    {
+        if 
     }
 }
