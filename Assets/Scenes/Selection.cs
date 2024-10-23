@@ -5,13 +5,16 @@ using UnityEngine.UIElements;
 
 public class Selection : MonoBehaviour
 {
-    CardSelected = ;
+    float CardSelected = 0;
     void Update()
     {
         Keyboard();
     }
     void Keyboard()
     {
-        if 
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            
+        }
     }
 }
