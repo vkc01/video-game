@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 public class Selection : MonoBehaviour
 {
     float CardSelected = 0;
+    float CardSelection = 0;
+
     void Update()
     {
         Keyboard();
@@ -14,7 +16,7 @@ public class Selection : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            
+            CardSelected = CardSelection + 1;
         }
     }
 }
