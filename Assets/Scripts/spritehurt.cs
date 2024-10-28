@@ -24,5 +24,4 @@ public class spritehurt : MonoBehaviour
     {
         myImage.color = myColor;
     }
-
 }
