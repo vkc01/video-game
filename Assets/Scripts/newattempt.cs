@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class levelloader : MonoBehaviour
+public class newattempt : MonoBehaviour
 {
-    public static SceneController instance;
-    Animator transitionAnim;
+    [SerializeField] Animator transitionAnim;
     void Update()
     {
         if (Input.GetKeyDown("space"))
         {
-            StartCoroutine(LoadNextLevel());
+            StartCoroutine(LoadLevel());
         }
     }
     IEnumerator LoadLevel()
     {
         transitionAnim.SetTrigger("Start");
-        yield return new WaitforSeconds(1);
-        SceneManager.LoadSceneAync(SceneManager.GetActiveScene().buildIndex + 1);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
