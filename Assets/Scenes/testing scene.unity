@@ -809,7 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac3c85251925764e9ee3c6e424b9efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1948328188}
+  MainCamera: {fileID: 1948328191}
 --- !u!95 &1948328191
 Animator:
   serializedVersion: 7

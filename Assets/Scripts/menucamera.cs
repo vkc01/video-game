@@ -4,24 +4,69 @@ using UnityEngine;
 
 public class menucamera : MonoBehaviour
 {
-    [SerializeField] Camera cam;
+    [SerializeField] public Animator MainCamera;
+    string whereCam;
+    void Start()
+    {
+        whereCam = "middle";
+    }
     void Update()
     {
+        if (Input.anyKeyDown)
+        {
+            Debug.Log(whereCam);
+        }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.position = cam.transform.position + new Vector3(21.25f, 0, 0);
+            if (whereCam == "middle")
+            {
+                MainCamera.SetTrigger("moveright");
+                whereCam = "right";
+            }
+            if (whereCam == "left")
+            {
+                MainCamera.SetTrigger("rightfromleft");
+                whereCam = "middle";
+            }
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            transform.position = cam.transform.position + new Vector3(0, 10, 0);
+            if (whereCam == "middle")
+            {
+                MainCamera.SetTrigger("moveup");
+                whereCam = "up";
+            }
+            if (whereCam == "down")
+            {
+                MainCamera.SetTrigger("upfromdown");
+                whereCam = "middle";
+            }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.position = cam.transform.position + new Vector3(-21.25f, 0, 0);
+            if (whereCam == "middle")
+            {
+                MainCamera.SetTrigger("moveleft");
+                whereCam = "left";
+            }
+            if (whereCam == "right")
+            {
+                MainCamera.SetTrigger("leftfromright");
+                whereCam = "middle";
+            }
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            transform.position = cam.transform.position + new Vector3(0, -10, 0);
+            if (whereCam == "middle")
+            {
+                MainCamera.SetTrigger("movedown");
+                whereCam = "down";
+            }
+            if (whereCam == "up")
+            {
+                MainCamera.SetTrigger("downfromup");
+                whereCam = "middle";
+            }
         }
     }
 }
