@@ -14,7 +14,7 @@ public class cardsattempt : MonoBehaviour
     void Start()
     {
         howManyAdded = 0.0f;
-        gapFromOneItemToTheNextOne = 1.0f;
+        gapFromOneItemToTheNextOne = 50.0f;
     }
 
     public void FitCards()
