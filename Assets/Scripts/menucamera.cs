@@ -8,14 +8,14 @@ public class menucamera : MonoBehaviour
     string whereCam;
     void Start()
     {
-        whereCam = "middle";
+        whereCam = "down";
     }
     void Update()
     {
-        if (Input.anyKeyDown)
+        /*if (Input.anyKeyDown)
         {
             Debug.Log(whereCam);
-        }
+        }*/
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             if (whereCam == "middle")
