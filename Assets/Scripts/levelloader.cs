@@ -15,6 +15,7 @@ public class levelloader : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             LoadNextLevel();
+            Debug.Log("next level");
         }
     }
 
@@ -24,8 +25,10 @@ public class levelloader : MonoBehaviour
     }
     IEnumerator LoadLevel(int levelIndex)
     {
-        transition.SetTrigger("Start");
+        transition.SetTrigger("CloseScreen");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelIndex);
+        yield return new WaitForSeconds(transitionTime);
+        transition.SetTrigger("OpenScreen");
     }
 }
