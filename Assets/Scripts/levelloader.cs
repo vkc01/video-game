@@ -27,8 +27,11 @@ public class levelloader : MonoBehaviour
     {
         transition.SetTrigger("CloseScreen");
         yield return new WaitForSeconds(transitionTime);
+        NextScene();
         SceneManager.LoadScene(levelIndex);
-        yield return new WaitForSeconds(transitionTime);
-        transition.SetTrigger("OpenScreen");
+    }
+    public void NextScene()
+    {
+        FindAnyObjectByType<nextscenescript>().GoToPlayfield();
     }
 }
