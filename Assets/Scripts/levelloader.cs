@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class levelloader : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1f;
+    public Image drape;
+    Color drapecolor;
 
     // FindAnyObjectByType<CALLERSCRIPTSNAME>().GoToPlayfield();
-    //GoToPlayfield()
+    // GoToPlayfield()
     void Update()
     {
         if (Input.GetKeyDown("space"))

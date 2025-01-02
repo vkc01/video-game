@@ -8,13 +8,8 @@ public class nextscenescript : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
-    public void GoToPlayfield()
+    void Start()
     {
-        Invoke("NextScene", transitionTime);
-    }
-
-    void NextScene()
-    {
-        transition.SetTrigger("CloseScreen");
+        transition.SetTrigger("OpenScreen");
     }
 }
