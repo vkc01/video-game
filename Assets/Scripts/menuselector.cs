@@ -6,6 +6,7 @@ public class menuselector : MonoBehaviour
 {
     public Animator selector;
     string whereselector = "play";
+    string wherescreen = "title";
     float movingselector = 0;
     public void titletomain()
     {
@@ -33,7 +34,11 @@ public class menuselector : MonoBehaviour
     }
     void OnOne(InputValue value)
     {
-        if (value.isPressed && movingselector == 1)
+        if (movingselector == 0)
+        {
+            return;
+        }
+        if (wherescreen == "title")
         {
             if (whereselector == "play")
             {
