@@ -15,6 +15,26 @@ public class menucamera : MonoBehaviour
         MainCamera.SetTrigger("moveup");
         whereCam = "up";
     }
+    public void maintotitle()
+    {
+        MainCamera.SetTrigger("movedown");
+        whereCam = "down";
+    }
+    public void maintoplay()
+    {
+        MainCamera.SetTrigger("moveup");
+        whereCam = "up";
+    }
+    public void maintohelp()
+    {
+        MainCamera.SetTrigger("moveleft");
+        whereCam = "left";
+    }
+    public void maintocredits()
+    {
+        MainCamera.SetTrigger("moveright");
+        whereCam = "right";
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
