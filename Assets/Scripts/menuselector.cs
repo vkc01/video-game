@@ -6,10 +6,14 @@ public class menuselector : MonoBehaviour
 {
     public Animator selector;
     string whereselector = "play";
-
+    float movingselector = 0;
+    public void titletomain()
+    {
+        movingselector = 1;
+    }
     void OnOne(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && movingselector == 1)
         {
             if (whereselector == "play")
             {
@@ -34,7 +38,7 @@ public class menuselector : MonoBehaviour
     }
     void OnTwo(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && movingselector == 1)
         {
             if (whereselector == "play")
             {
@@ -59,7 +63,7 @@ public class menuselector : MonoBehaviour
     }
     void OnThree(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && movingselector == 1)
         {
             if (whereselector == "play")
             {
@@ -84,7 +88,7 @@ public class menuselector : MonoBehaviour
     }
     void OnFour(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && movingselector == 1)
         {
             if (whereselector == "play")
             {

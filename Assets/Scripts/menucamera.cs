@@ -10,12 +10,13 @@ public class menucamera : MonoBehaviour
     {
         whereCam = "down";
     }
+    public void titletomain()
+    {
+        MainCamera.SetTrigger("moveup");
+        whereCam = "up";
+    }
     void Update()
     {
-        /*if (Input.anyKeyDown)
-        {
-            Debug.Log(whereCam);
-        }*/
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             if (whereCam == "middle")
