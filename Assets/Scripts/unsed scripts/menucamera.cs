@@ -12,8 +12,8 @@ public class menucamera : MonoBehaviour
     }
     public void titletomain()
     {
-        MainCamera.SetTrigger("moveup");
-        whereCam = "up";
+        MainCamera.SetTrigger("upfromdown");
+        whereCam = "middle";
     }
     public void maintotitle()
     {
@@ -25,15 +25,30 @@ public class menucamera : MonoBehaviour
         MainCamera.SetTrigger("moveup");
         whereCam = "up";
     }
+    public void playtomain()
+    {
+        MainCamera.SetTrigger("downfromup");
+        whereCam = "middle";
+    }
     public void maintohelp()
     {
         MainCamera.SetTrigger("moveleft");
         whereCam = "left";
     }
+    public void helptomain()
+    {
+        MainCamera.SetTrigger("rightfromleft");
+        whereCam = "middle";
+    }
     public void maintocredits()
     {
         MainCamera.SetTrigger("moveright");
         whereCam = "right";
+    }
+    public void creditstomain()
+    {
+        MainCamera.SetTrigger("leftfromright");
+        whereCam = "middle";
     }
     void Update()
     {

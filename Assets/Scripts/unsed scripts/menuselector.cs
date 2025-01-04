@@ -47,19 +47,16 @@ public class menuselector : MonoBehaviour
             if (whereselector == "help")
             {
                 selector.SetTrigger("helptoplay");
-                FindAnyObjectByType<MenuMovement>().SelectorOnPlay();
                 whereselector = "play";
             }
             if (whereselector == "credits")
             {
                 selector.SetTrigger("creditstoplay");
-                FindAnyObjectByType<MenuMovement>().SelectorOnPlay();
                 whereselector = "play";
             }
             if (whereselector == "title")
             {
                 selector.SetTrigger("titletoplay");
-                FindAnyObjectByType<MenuMovement>().SelectorOnPlay();
                 whereselector = "play";
             }
         }
@@ -75,19 +72,16 @@ public class menuselector : MonoBehaviour
             if (whereselector == "play")
             {
                 selector.SetTrigger("playtohelp");
-                FindAnyObjectByType<MenuMovement>().SelectorOnHelp();
                 whereselector = "help";
             }
             if (whereselector == "credits")
             {
                 selector.SetTrigger("creditstohelp");
-                FindAnyObjectByType<MenuMovement>().SelectorOnHelp();
                 whereselector = "help";
             }
             if (whereselector == "title")
             {
                 selector.SetTrigger("titletohelp");
-                FindAnyObjectByType<MenuMovement>().SelectorOnHelp();
                 whereselector = "help";
             }
         }
@@ -103,19 +97,16 @@ public class menuselector : MonoBehaviour
             if (whereselector == "play")
             {
                 selector.SetTrigger("playtocredits");
-                FindAnyObjectByType<MenuMovement>().SelectorOnCredits();
                 whereselector = "credits";
             }
             if (whereselector == "help")
             {
                 selector.SetTrigger("helptocredits");
-                FindAnyObjectByType<MenuMovement>().SelectorOnCredits();
                 whereselector = "credits";
             }
             if (whereselector == "title")
             {
                 selector.SetTrigger("titletocredits");
-                FindAnyObjectByType<MenuMovement>().SelectorOnCredits();
                 whereselector = "credits";
             }
         }
@@ -131,19 +122,16 @@ public class menuselector : MonoBehaviour
             if (whereselector == "play")
             {
                 selector.SetTrigger("playtotitle");
-                FindAnyObjectByType<MenuMovement>().SelectorOnTitle();
                 whereselector = "title";
             }
             if (whereselector == "help")
             {
                 selector.SetTrigger("helptotitle");
-                FindAnyObjectByType<MenuMovement>().SelectorOnTitle();
                 whereselector = "title";
             }
             if (whereselector == "credits")
             {
                 selector.SetTrigger("creditstotitle");
-                FindAnyObjectByType<MenuMovement>().SelectorOnTitle();
                 whereselector = "title";
             }
         }
