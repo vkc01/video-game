@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using System.Numerics;
+using UnityEngine.UI;
 
 public class MenuMovement : MonoBehaviour
 {
     public Animator allelements;
     public Animator selector;
-    public RectTransform selectorpos;
+    public Image selectorobj;
+    private RectTransform selectorpos;
     string wherePlayer = "title";
     string whereSelector = "play";
     int movingselector = 0;
@@ -14,6 +18,7 @@ public class MenuMovement : MonoBehaviour
         wherePlayer = "title";
         whereSelector = "play";
         movingselector = 0;
+        selectorpos = selectorobj.GetComponent<RectTransform>();
     }
     void OnEnter(InputValue value)
     {
@@ -32,7 +37,7 @@ public class MenuMovement : MonoBehaviour
                 allelements.SetTrigger("mainscreentoplayscreen");
                 selector.SetTrigger("selector-maintoplay");
                 wherePlayer = "play";
-                MainToPlay();
+                StartCoroutine(MainToPlay());
                 return;
             }
             if (whereSelector == "credits") // main to credits screen
@@ -57,20 +62,53 @@ public class MenuMovement : MonoBehaviour
                 return;
             }
         }
+        if (wherePlayer == "play")
+        {
+            if (whereSelector == "title") // main to play screen
+            {
+                allelements.SetTrigger("mainscreentoplayscreen");
+                selector.SetTrigger("selector-maintoplay");
+                wherePlayer = "play";
+                StartCoroutine(MainToPlay());
+                return;
+            }
+            if (whereSelector == "2 players") // main to credits screen
+            {
+                allelements.SetTrigger("mainscreentocreditsscreen");
+                selector.SetTrigger("selector-maintocredits");
+                wherePlayer = "credits";
+            }
+            if (whereSelector == "3 players") // main to help screen
+            {
+                allelements.SetTrigger("mainscreentohelpscreen");
+                selector.SetTrigger("selector-maintohelp");
+                wherePlayer = "help";
+            }
+            if (whereSelector == "4 players") // main to title screen
+            {
+                return;
+            }
+        }
+        if (wherePlayer == "credits")
+        {
+
+        }
     }
 
-    void MainToPlay()
+    public IEnumerator MainToPlay()
     {
-        selector.SetTrigger("selector-TPtoplayer2");
-        whereSelector = "play";
+        yield return new WaitForSecondsRealtime(1f);
+        Debug.Log(selectorpos.position);
+        selectorpos.position = new UnityEngine.Vector2(-375, -160);
+        Debug.Log(selectorpos.position);
+        // FindAnyObjectByType<selectorteleportation>().maintoplay();
+        // selector.SetTrigger("selector-TPtoplayer2");
+        whereSelector = "main";
     }
 
     // selector controller
     void OnOne(InputValue value)
     {
-        /*Debug.Log(selectorpos.anchoredPosition);
-        selectorpos.anchoredPosition = new Vector2(0, 0);
-        Debug.Log(selectorpos.anchoredPosition);*/
         if (movingselector == 0)
         {
             return;
@@ -100,10 +138,8 @@ public class MenuMovement : MonoBehaviour
     }
     void OnTwo(InputValue value)
     {
-        Debug.Log("2");
         if (movingselector == 0)
         {
-            Debug.Log("returned");
             return;
         }
         if (wherePlayer == "main")
@@ -114,7 +150,6 @@ public class MenuMovement : MonoBehaviour
             }
             if (whereSelector == "play")
             {
-                Debug.Log("playtohelp");
                 selector.SetTrigger("playtohelp");
                 whereSelector = "help";
             }
