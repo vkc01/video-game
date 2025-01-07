@@ -8,8 +8,6 @@ public class MenuMovement : MonoBehaviour
 {
     public Animator allelements;
     public Animator selector;
-    public Image selectorobj;
-    private RectTransform selectorpos;
     string wherePlayer = "title";
     string whereSelector = "play";
     int movingselector = 0;
@@ -18,7 +16,6 @@ public class MenuMovement : MonoBehaviour
         wherePlayer = "title";
         whereSelector = "play";
         movingselector = 0;
-        selectorpos = selectorobj.GetComponent<RectTransform>();
     }
     void OnEnter(InputValue value)
     {
@@ -64,29 +61,28 @@ public class MenuMovement : MonoBehaviour
         }
         if (wherePlayer == "play")
         {
-            if (whereSelector == "title") // main to play screen
+            if (whereSelector == "main") // play to main screen
             {
-                allelements.SetTrigger("mainscreentoplayscreen");
-                selector.SetTrigger("selector-maintoplay");
-                wherePlayer = "play";
-                StartCoroutine(MainToPlay());
+                allelements.SetTrigger("playscreentomainscreen");
+                selector.SetTrigger("selector-playtomain");
+                wherePlayer = "main";
+                StartCoroutine(PlayToMain());
                 return;
             }
-            if (whereSelector == "2 players") // main to credits screen
+            if (whereSelector == "2players") // selects 2 players
             {
-                allelements.SetTrigger("mainscreentocreditsscreen");
-                selector.SetTrigger("selector-maintocredits");
-                wherePlayer = "credits";
+                Debug.Log("2 players selected");
+                // send to 2 player game scene
             }
-            if (whereSelector == "3 players") // main to help screen
+            if (whereSelector == "3players") // selects 3 players
             {
-                allelements.SetTrigger("mainscreentohelpscreen");
-                selector.SetTrigger("selector-maintohelp");
-                wherePlayer = "help";
+                Debug.Log("3 players selected");
+                // send to 3 player game scene
             }
-            if (whereSelector == "4 players") // main to title screen
+            if (whereSelector == "4players") // selects 4 players
             {
-                return;
+                Debug.Log("4 players selected");
+                // send to 4 player game scene
             }
         }
         if (wherePlayer == "credits")
@@ -98,14 +94,16 @@ public class MenuMovement : MonoBehaviour
     public IEnumerator MainToPlay()
     {
         yield return new WaitForSecondsRealtime(1f);
-        Debug.Log(selectorpos.position);
-        selectorpos.position = new UnityEngine.Vector2(-375, -160);
-        Debug.Log(selectorpos.position);
-        // FindAnyObjectByType<selectorteleportation>().maintoplay();
-        // selector.SetTrigger("selector-TPtoplayer2");
+        selector.SetTrigger("selector-TPtomainbutton");
         whereSelector = "main";
     }
-
+    public IEnumerator PlayToMain()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        selector.SetTrigger("selector-TPtoplaybutton");
+        whereSelector = "main";
+    }
+    
     // selector controller
     void OnOne(InputValue value)
     {
@@ -133,6 +131,28 @@ public class MenuMovement : MonoBehaviour
             {
                 selector.SetTrigger("titletoplay");
                 whereSelector = "play";
+            }
+        }
+        if (wherePlayer == "play")
+        {
+            if (whereSelector == "main")
+            {
+                return;
+            }
+            if (whereSelector == "2players")
+            {
+                selector.SetTrigger("2playerstomain");
+                whereSelector = "main";
+            }
+            if (whereSelector == "3players")
+            {
+                selector.SetTrigger("3playerstomain");
+                whereSelector = "main";
+            }
+            if (whereSelector == "4players")
+            {
+                selector.SetTrigger("4playerstomain");
+                whereSelector = "main";
             }
         }
     }
@@ -164,6 +184,28 @@ public class MenuMovement : MonoBehaviour
                 whereSelector = "help";
             }
         }
+        if (wherePlayer == "play")
+        {
+            if (whereSelector == "2players")
+            {
+                return;
+            }
+            if (whereSelector == "main")
+            {
+                selector.SetTrigger("mainto2players");
+                whereSelector = "2players";
+            }
+            if (whereSelector == "3players")
+            {
+                selector.SetTrigger("3playersto2players");
+                whereSelector = "2players";
+            }
+            if (whereSelector == "4players")
+            {
+                selector.SetTrigger("4playersto2players");
+                whereSelector = "2players";
+            }
+        }
     }
     void OnThree(InputValue value)
     {
@@ -193,6 +235,28 @@ public class MenuMovement : MonoBehaviour
                 whereSelector = "credits";
             }
         }
+        if (wherePlayer == "play")
+        {
+            if (whereSelector == "3players")
+            {
+                return;
+            }
+            if (whereSelector == "2players")
+            {
+                selector.SetTrigger("2playersto3players");
+                whereSelector = "3players";
+            }
+            if (whereSelector == "main")
+            {
+                selector.SetTrigger("mainto3players");
+                whereSelector = "3players";
+            }
+            if (whereSelector == "title")
+            {
+                selector.SetTrigger("4playersto3players");
+                whereSelector = "3players";
+            }
+        }
     }
     void OnFour(InputValue value)
     {
@@ -220,6 +284,28 @@ public class MenuMovement : MonoBehaviour
             {
                 selector.SetTrigger("creditstotitle");
                 whereSelector = "title";
+            }
+        }
+        if (wherePlayer == "play")
+        {
+            if (whereSelector == "4players")
+            {
+                return;
+            }
+            if (whereSelector == "2players")
+            {
+                selector.SetTrigger("2playersto4players");
+                whereSelector = "4players";
+            }
+            if (whereSelector == "3players")
+            {
+                selector.SetTrigger("3playersto4players");
+                whereSelector = "4players";
+            }
+            if (whereSelector == "main")
+            {
+                selector.SetTrigger("mainto4players");
+                whereSelector = "4players";
             }
         }
     }
