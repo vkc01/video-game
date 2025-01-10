@@ -11,20 +11,13 @@ public class levelloader : MonoBehaviour
     public Image drape;
     Color drapecolor;
 
-    // FindAnyObjectByType<CALLERSCRIPTSNAME>().GoToPlayfield();
-    // GoToPlayfield()
-    void Update()
+    public void GoToPlayfield(int value)
     {
-        if (Input.GetKeyDown("space"))
-        {
-            LoadNextLevel();
-            Debug.Log("next level");
-        }
+        LoadNextLevel(value);
     }
-
-    public void LoadNextLevel()
+    public void LoadNextLevel(int value)
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(LoadLevel(value));
     }
     IEnumerator LoadLevel(int levelIndex)
     {

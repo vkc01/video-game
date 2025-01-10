@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Numerics;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuMovement : MonoBehaviour
 {
@@ -72,17 +73,17 @@ public class MenuMovement : MonoBehaviour
             if (whereSelector == "2players") // selects 2 players
             {
                 Debug.Log("2 players selected");
-                // send to 2 player game scene
+                FindAnyObjectByType<levelloader>().GoToPlayfield(1);
             }
             if (whereSelector == "3players") // selects 3 players
             {
                 Debug.Log("3 players selected");
-                // send to 3 player game scene
+                FindAnyObjectByType<levelloader>().GoToPlayfield(2);
             }
             if (whereSelector == "4players") // selects 4 players
             {
                 Debug.Log("4 players selected");
-                // send to 4 player game scene
+                FindAnyObjectByType<levelloader>().GoToPlayfield(0);
             }
         }
         if (wherePlayer == "credits")
@@ -99,9 +100,9 @@ public class MenuMovement : MonoBehaviour
     }
     public IEnumerator PlayToMain()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.96f);
         selector.SetTrigger("selector-TPtoplaybutton");
-        whereSelector = "main";
+        whereSelector = "play";
     }
     
     // selector controller
