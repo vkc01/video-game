@@ -90,6 +90,10 @@ public class MenuMovement : MonoBehaviour
         {
 
         }
+        if (wherePlayer == "help")
+        {
+
+        }
     }
 
     public IEnumerator MainToPlay()
