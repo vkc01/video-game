@@ -78,12 +78,12 @@ public class MenuMovement : MonoBehaviour
             if (whereSelector == "3players") // selects 3 players
             {
                 Debug.Log("3 players selected");
-                FindAnyObjectByType<levelloader>().GoToPlayfield(2);
+                FindAnyObjectByType<levelloader>().GoToPlayfield(1);
             }
             if (whereSelector == "4players") // selects 4 players
             {
                 Debug.Log("4 players selected");
-                FindAnyObjectByType<levelloader>().GoToPlayfield(0);
+                FindAnyObjectByType<levelloader>().GoToPlayfield(1);
             }
         }
         if (wherePlayer == "credits")
@@ -256,7 +256,7 @@ public class MenuMovement : MonoBehaviour
                 selector.SetTrigger("mainto3players");
                 whereSelector = "3players";
             }
-            if (whereSelector == "title")
+            if (whereSelector == "4players")
             {
                 selector.SetTrigger("4playersto3players");
                 whereSelector = "3players";

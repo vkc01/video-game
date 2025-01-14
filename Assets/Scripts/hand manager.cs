@@ -8,6 +8,8 @@ public class handmanager : MonoBehaviour
     public GameObject cardPrefab;
     public Transform handTransform;
     public float fanSpread = 5;
+    public float cardSpacing = 75;
+    public float verticalSpacing = 100;
     public List<GameObject> cardsinHand = new List<GameObject>();
     void Start()
     {
@@ -15,20 +17,41 @@ public class handmanager : MonoBehaviour
         AddCardToHand();
         AddCardToHand();
         AddCardToHand();
+        AddCardToHand();
+        AddCardToHand();
+        AddCardToHand();
+        AddCardToHand();
     }
 
+    void Update()
+    {
+        UpdateHandVisuals();
+    }
     public void AddCardToHand()
     {
-        GameObject newcard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
-        cardsinHand.Add(newcard);
+        GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
+        cardsinHand.Add(newCard);
+        UpdateHandVisuals();
     }
     void UpdateHandVisuals()
     {
         int cardCount = cardsinHand.Count;
+        if (cardCount == 1)
+        {
+            cardsinHand[0].transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            cardsinHand[0].transform.localPosition = new Vector3(0f, 0f, 0f);
+            return;
+        }
+        
         for (int i = 0; i < cardCount; i++)
         {
             float rotationAngle = fanSpread * (i - (cardCount - 1) / 2);
             cardsinHand[i].transform.localRotation = Quaternion.Euler(0f, 0f, rotationAngle);
+            float horizontalOffset = cardSpacing * (i- (cardCount - 1) / 2);
+            float normalizedPosition = 2 * i / (cardCount -1) - 1;
+            float verticalOffset = verticalSpacing * (1 - normalizedPosition * normalizedPosition);
+            cardsinHand[i].transform.localPosition = new Vector3(horizontalOffset, verticalOffset, 0f);
+            // Debug.Log(verticalOffset + " and " + horizontalOffset + " and " + normalizedPosition);
         }
     }
 }
