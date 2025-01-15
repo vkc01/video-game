@@ -5,6 +5,7 @@ using System;
 
 public class handmanager : MonoBehaviour
 {
+    public DeckManager DeckManager;
     public GameObject cardPrefab;
     public Transform handTransform;
     public float fanSpread = 5;
@@ -13,24 +14,19 @@ public class handmanager : MonoBehaviour
     public List<GameObject> cardsinHand = new List<GameObject>();
     void Start()
     {
-        AddCardToHand();
-        AddCardToHand();
-        AddCardToHand();
-        AddCardToHand();
-        AddCardToHand();
-        AddCardToHand();
-        AddCardToHand();
-        AddCardToHand();
+        
     }
 
     void Update()
     {
         UpdateHandVisuals();
     }
-    public void AddCardToHand()
+    public void AddCardToHand(Card cardData)
     {
         GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
         cardsinHand.Add(newCard);
+        newCard.GetComponent<carddisplay>().cardData = cardData;
+
         UpdateHandVisuals();
     }
     void UpdateHandVisuals()
@@ -47,11 +43,14 @@ public class handmanager : MonoBehaviour
         {
             float rotationAngle = fanSpread * (i - (cardCount - 1) / 2);
             cardsinHand[i].transform.localRotation = Quaternion.Euler(0f, 0f, rotationAngle);
+
             float horizontalOffset = cardSpacing * (i- (cardCount - 1) / 2);
-            float normalizedPosition = 2 * i / (cardCount -1) - 1;
+
+            // float normalizedPosition = 2 * i / (cardCount -1) - 1;
+            float normalizedPosition = (float)i / (cardCount - 1) * 2 - 1;
             float verticalOffset = verticalSpacing * (1 - normalizedPosition * normalizedPosition);
+
             cardsinHand[i].transform.localPosition = new Vector3(horizontalOffset, verticalOffset, 0f);
-            // Debug.Log(verticalOffset + " and " + horizontalOffset + " and " + normalizedPosition);
         }
     }
 }
