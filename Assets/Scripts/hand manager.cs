@@ -41,12 +41,11 @@ public class handmanager : MonoBehaviour
         
         for (int i = 0; i < cardCount; i++)
         {
-            float rotationAngle = fanSpread * (i - (cardCount - 1) / 2);
-            cardsinHand[i].transform.localRotation = Quaternion.Euler(0f, 0f, rotationAngle);
+            /*float rotationAngle = fanSpread * (i - (cardCount - 1) / 2);
+            cardsinHand[i].transform.localRotation = Quaternion.Euler(0f, 0f, rotationAngle);*/
 
             float horizontalOffset = cardSpacing * (i- (cardCount - 1) / 2);
 
-            // float normalizedPosition = 2 * i / (cardCount -1) - 1;
             float normalizedPosition = (float)i / (cardCount - 1) * 2 - 1;
             float verticalOffset = verticalSpacing * (1 - normalizedPosition * normalizedPosition);
 
