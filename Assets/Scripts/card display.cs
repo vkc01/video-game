@@ -8,5 +8,10 @@ using Image = UnityEngine.UI.Image;
 public class carddisplay : MonoBehaviour
 {
     public Card cardData;
-    public Image cardImage;
+
+    void Start()
+    {
+        Image image = GetComponent<Image>();
+        image.sprite = cardData.cardImage;
+    }
 }

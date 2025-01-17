@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Goblin
   cardType: 00000000
+  cardImage: {fileID: 918396499039396468, guid: fe582c3aa70bb3f488bf936d9eb0d25c, type: 3}

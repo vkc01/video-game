@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Elf
   cardType: 02000000
+  cardImage: {fileID: -1367291550803677559, guid: bdb48d6b8b61ca94f91ff139a7aea845, type: 3}
