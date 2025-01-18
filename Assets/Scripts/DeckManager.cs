@@ -18,7 +18,8 @@ public class DeckManager : MonoBehaviour
         {
             return;
         }
-        Card nextCard = allCards[currentIndex];
+        int randomIndex = Random.Range(0, allCards.Count);
+        Card nextCard = allCards[randomIndex];
         handManager.AddCardToHand(nextCard);
         currentIndex = (currentIndex + 1) % allCards.Count;
     }
