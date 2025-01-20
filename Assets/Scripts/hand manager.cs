@@ -8,8 +8,8 @@ public class handmanager : MonoBehaviour
     public DeckManager DeckManager;
     public GameObject cardPrefab;
     public Transform handTransform;
-    public float cardSpacing = 75;
-    public float verticalSpacing = 100;
+    public float whatPlayer;
+    public float cardSpacing = -210f;
     public List<GameObject> cardsinHand = new List<GameObject>();
 
     void Update()

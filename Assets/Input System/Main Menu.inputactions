@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Enter",
+                    "name": "Space",
                     "type": "Button",
                     "id": "c1eebb2b-b630-47aa-bfaa-a5cb8185f678",
                     "expectedControlType": "",
@@ -119,11 +119,11 @@
                 {
                     "name": "",
                     "id": "a2db8e06-9866-41fd-aef0-9432acf8cb74",
-                    "path": "<Keyboard>/enter",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Enter",
+                    "action": "Space",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

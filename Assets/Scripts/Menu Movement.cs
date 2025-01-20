@@ -18,7 +18,7 @@ public class MenuMovement : MonoBehaviour
         whereSelector = "play";
         movingselector = 0;
     }
-    void OnEnter(InputValue value)
+    void OnSpace(InputValue value)
     {
         if (wherePlayer == "title") // goes from title to main
         {
@@ -49,6 +49,8 @@ public class MenuMovement : MonoBehaviour
                 allelements.SetTrigger("mainscreentohelpscreen");
                 selector.SetTrigger("selector-maintohelp");
                 wherePlayer = "help";
+                StartCoroutine(MainToHelp());
+                return;
             }
             if (whereSelector == "title") // main to title screen
             {
@@ -67,7 +69,7 @@ public class MenuMovement : MonoBehaviour
                 allelements.SetTrigger("playscreentomainscreen");
                 selector.SetTrigger("selector-playtomain");
                 wherePlayer = "main";
-                StartCoroutine(PlayToMain());
+                StartCoroutine(ToMain());
                 return;
             }
             if (whereSelector == "2players") // selects 2 players
@@ -88,25 +90,45 @@ public class MenuMovement : MonoBehaviour
         }
         if (wherePlayer == "credits")
         {
-
+            if (whereSelector == "main") // credits to main screen
+            {
+                allelements.SetTrigger("creditsscreentomainscreen");
+                selector.SetTrigger("selector-creditstomain");
+                wherePlayer = "main";
+                StartCoroutine(ToMain());
+                return;
+            }
         }
         if (wherePlayer == "help")
         {
-
+            if (whereSelector == "main") // play to main screen
+            {
+                allelements.SetTrigger("helpscreentomainscreen");
+                selector.SetTrigger("selector-helptomain");
+                wherePlayer = "main";
+                StartCoroutine(ToMain());
+                return;
+            }
         }
     }
 
     public IEnumerator MainToPlay()
     {
         yield return new WaitForSecondsRealtime(1f);
-        selector.SetTrigger("selector-TPtomainbutton");
+        selector.SetTrigger("selector-TPtoplaymainbutton");
         whereSelector = "main";
     }
-    public IEnumerator PlayToMain()
+    public IEnumerator ToMain()
     {
         yield return new WaitForSecondsRealtime(0.96f);
         selector.SetTrigger("selector-TPtoplaybutton");
         whereSelector = "play";
+    }
+    public IEnumerator MainToHelp()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        selector.SetTrigger("selector-TPtohelpmainbutton");
+        whereSelector = "main";
     }
     
     // selector controller

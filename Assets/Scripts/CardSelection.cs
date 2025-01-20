@@ -2,21 +2,103 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 public class Selection : MonoBehaviour
 {
-    float CardSelected = 0;
-    float CardSelection = 0;
-
-    void Update()
+    public Animator SelectingCards;
+    int whereSelector;
+    void Start()
     {
-        Keyboard();
+        whereSelector = 1;
     }
-    void Keyboard()
+    void OnSpace(InputValue value)
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        
+    }
+    public IEnumerator MainToPlay()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        SelectingCards.SetTrigger("TPtoOne");
+        whereSelector = 1;
+    }
+    void OnOne(InputValue value)
+    {
+        Debug.Log("One Pressed");
+        if (whereSelector == 1)
         {
-            CardSelected = CardSelection + 1;
+            return;
+        }
+        if (whereSelector == 2)
+        {
+            SelectingCards.SetTrigger("OnetoTwo");
+            whereSelector = 2;
+            Debug.Log("OnetoTwo");
+        }
+        if (whereSelector == 3)
+        {
+            SelectingCards.SetTrigger("OnetoThree");
+        }
+        if (whereSelector == 4)
+        {
+            SelectingCards.SetTrigger("OnetoFour");
+        }
+    }
+    void OnTwo(InputValue value)
+    {
+        if (whereSelector == 2)
+        {
+            return;
+        }
+        if (whereSelector == 1)
+        {
+            SelectingCards.SetTrigger("TwotoOne");
+        }
+        if (whereSelector == 3)
+        {
+            SelectingCards.SetTrigger("TwotoThree");
+        }
+        if (whereSelector == 4)
+        {
+            SelectingCards.SetTrigger("TwotoFour");
+        }
+    }
+    void OnThree(InputValue value)
+    {
+        if (whereSelector == 3)
+        {
+            return;
+        }
+        if (whereSelector == 1)
+        {
+            SelectingCards.SetTrigger("ThreetoOne");
+        }
+        if (whereSelector == 2)
+        {
+            SelectingCards.SetTrigger("ThreetoTwo");
+        }
+        if (whereSelector == 4)
+        {
+            SelectingCards.SetTrigger("ThreetoFour");
+        }
+    }
+    void OnFour(InputValue value)
+    {
+        if (whereSelector == 4)
+        {
+            return;
+        }
+        if (whereSelector == 1)
+        {
+            SelectingCards.SetTrigger("FourtoOne");
+        }
+        if (whereSelector == 2)
+        {
+            SelectingCards.SetTrigger("FourtoTwo");
+        }
+        if (whereSelector == 3)
+        {
+            SelectingCards.SetTrigger("FourtoThree");
         }
     }
 }

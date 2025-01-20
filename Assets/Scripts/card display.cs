@@ -1,7 +1,5 @@
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using cardsetup;
 using Image = UnityEngine.UI.Image;
 
