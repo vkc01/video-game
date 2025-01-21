@@ -101,7 +101,7 @@ public class MenuMovement : MonoBehaviour
         }
         if (wherePlayer == "help")
         {
-            if (whereSelector == "main") // play to main screen
+            if (whereSelector == "main") // help to main screen
             {
                 allelements.SetTrigger("helpscreentomainscreen");
                 selector.SetTrigger("selector-helptomain");

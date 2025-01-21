@@ -8,97 +8,111 @@ public class Selection : MonoBehaviour
 {
     public Animator SelectingCards;
     int whereSelector;
+    bool movableSelector;
+    GameObject cardType;
+    string cardData;
     void Start()
     {
         whereSelector = 1;
+        SelectingCards.SetTrigger("startingposition");
+        movableSelector = true;
     }
     void OnSpace(InputValue value)
     {
-        
+        movableSelector = false;
+        SelectingCards.SetTrigger("disappear");
+        if (whereSelector == 1)
+        {
+            cardType = GameObject.Find("/Player 2/Card 1/Card Prefab(Clone)");
+            cardData = cardType.GetComponent<carddisplay>().cardData.cardName;
+        }
+        StartCoroutine(ReappearInOne());
     }
-    public IEnumerator MainToPlay()
+    public IEnumerator ReappearInOne()
     {
         yield return new WaitForSecondsRealtime(1f);
         SelectingCards.SetTrigger("TPtoOne");
         whereSelector = 1;
+        movableSelector = true;
     }
     void OnOne(InputValue value)
     {
-        Debug.Log("One Pressed");
-        if (whereSelector == 1)
+        if (whereSelector == 1 || !movableSelector)
         {
             return;
         }
         if (whereSelector == 2)
-        {
-            SelectingCards.SetTrigger("OnetoTwo");
-            whereSelector = 2;
-            Debug.Log("OnetoTwo");
-        }
-        if (whereSelector == 3)
-        {
-            SelectingCards.SetTrigger("OnetoThree");
-        }
-        if (whereSelector == 4)
-        {
-            SelectingCards.SetTrigger("OnetoFour");
-        }
-    }
-    void OnTwo(InputValue value)
-    {
-        if (whereSelector == 2)
-        {
-            return;
-        }
-        if (whereSelector == 1)
         {
             SelectingCards.SetTrigger("TwotoOne");
         }
         if (whereSelector == 3)
         {
-            SelectingCards.SetTrigger("TwotoThree");
+            SelectingCards.SetTrigger("ThreetoOne");
         }
         if (whereSelector == 4)
         {
-            SelectingCards.SetTrigger("TwotoFour");
+            SelectingCards.SetTrigger("FourtoOne");
         }
+        whereSelector = 1;
     }
-    void OnThree(InputValue value)
+    void OnTwo(InputValue value)
     {
-        if (whereSelector == 3)
+        if (whereSelector == 2 || !movableSelector)
         {
             return;
         }
         if (whereSelector == 1)
         {
-            SelectingCards.SetTrigger("ThreetoOne");
+            SelectingCards.SetTrigger("OnetoTwo");
         }
-        if (whereSelector == 2)
+        if (whereSelector == 3)
         {
             SelectingCards.SetTrigger("ThreetoTwo");
         }
         if (whereSelector == 4)
         {
-            SelectingCards.SetTrigger("ThreetoFour");
+            SelectingCards.SetTrigger("FourtoTwo");
         }
+        whereSelector = 2;
     }
-    void OnFour(InputValue value)
+    void OnThree(InputValue value)
     {
-        if (whereSelector == 4)
+        if (whereSelector == 3 || !movableSelector)
         {
             return;
         }
         if (whereSelector == 1)
         {
-            SelectingCards.SetTrigger("FourtoOne");
+            SelectingCards.SetTrigger("OnetoThree");
         }
         if (whereSelector == 2)
         {
-            SelectingCards.SetTrigger("FourtoTwo");
+            SelectingCards.SetTrigger("TwotoThree");
         }
-        if (whereSelector == 3)
+        if (whereSelector == 4)
         {
             SelectingCards.SetTrigger("FourtoThree");
         }
+        whereSelector = 3;
+    }
+    void OnFour(InputValue value)
+    {
+        if (whereSelector == 4 || !movableSelector)
+        {
+            return;
+        }
+        if (whereSelector == 1)
+        {
+            SelectingCards.SetTrigger("OnetoFour");
+        }
+        if (whereSelector == 2)
+        {
+            SelectingCards.SetTrigger("TwotoFour");
+        }
+        if (whereSelector == 3)
+        {
+            SelectingCards.SetTrigger("ThreetoFour");
+        }
+        whereSelector = 4;
     }
 }

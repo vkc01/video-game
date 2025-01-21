@@ -15,3 +15,4 @@ MonoBehaviour:
   cardName: Slime
   cardType: 03000000
   cardImage: {fileID: 368543389579951487, guid: 2040fb75e5310ed44ad6b6ed0f8fa78e, type: 3}
+  cardDesc: Poison

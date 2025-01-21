@@ -9,6 +9,7 @@ namespace cardsetup
         public string cardName;
         public List<CardType> cardType;
         public Sprite cardImage;
+        public string cardDesc;
         public enum CardType
         {
             DMG,

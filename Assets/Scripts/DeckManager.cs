@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
-    private int currentIndex = 0;
     void Start()
     {
         Card[] cards = Resources.LoadAll<Card>("Cards");
@@ -21,6 +20,5 @@ public class DeckManager : MonoBehaviour
         int randomIndex = Random.Range(0, allCards.Count);
         Card nextCard = allCards[randomIndex];
         handManager.AddCardToHand(nextCard);
-        currentIndex = (currentIndex + 1) % allCards.Count;
     }
 }

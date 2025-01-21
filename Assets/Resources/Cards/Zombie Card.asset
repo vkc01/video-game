@@ -15,3 +15,4 @@ MonoBehaviour:
   cardName: Zombie
   cardType: 05000000
   cardImage: {fileID: -5782521184205631276, guid: 2316225dad6d89046a4ad0a11f59ecf1, type: 3}
+  cardDesc: Bonus

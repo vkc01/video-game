@@ -15,3 +15,4 @@ MonoBehaviour:
   cardName: Fairy
   cardType: 01000000
   cardImage: {fileID: -2990309890484215505, guid: 82709a8768617124c9f562c1e42c9a31, type: 3}
+  cardDesc: Support
