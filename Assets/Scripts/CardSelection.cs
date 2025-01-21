@@ -12,7 +12,7 @@ public class Selection : MonoBehaviour
     bool movableSelector;
     GameObject cardType;
     string cardData;
-    int playerTurn;
+    int playerTurn = 1;
     void Start()
     {
         whereSelector = 1;
