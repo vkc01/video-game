@@ -44,14 +44,6 @@ public class MenuMovement : MonoBehaviour
                 selector.SetTrigger("selector-maintocredits");
                 wherePlayer = "credits";
             }
-            if (whereSelector == "help") // main to help screen
-            {
-                allelements.SetTrigger("mainscreentohelpscreen");
-                selector.SetTrigger("selector-maintohelp");
-                wherePlayer = "help";
-                StartCoroutine(MainToHelp());
-                return;
-            }
             if (whereSelector == "title") // main to title screen
             {
                 allelements.SetTrigger("mainscreentotitlescreen");
@@ -59,6 +51,14 @@ public class MenuMovement : MonoBehaviour
                 wherePlayer = "title";
                 movingselector = 0;
                 whereSelector = "play";
+                return;
+            }
+            if (whereSelector == "help") // main to help screen
+            {
+                allelements.SetTrigger("mainscreentohelpscreen");
+                selector.SetTrigger("selector-maintohelp");
+                wherePlayer = "help";
+                StartCoroutine(MainToHelp());
                 return;
             }
         }

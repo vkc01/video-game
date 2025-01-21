@@ -11,12 +11,11 @@ public class handmanager : MonoBehaviour
     public Transform hand;
     public int playerId;
     public float cardCounter = 1;
-    int randomIndex;
     public List<GameObject> cardsinHand = new List<GameObject>();
 
     void Start()
     {
-        StartGame();
+        Invoke("StartGame", 1f);
     }
     void StartGame()
     {
@@ -30,9 +29,8 @@ public class handmanager : MonoBehaviour
     }
     public void AddCardToHand(Card cardData)
     {
-        GameObject newCard = Instantiate(cardPrefab, GameObject.Find("Card " + cardCounter).transform.position, Quaternion.identity, GameObject.Find("Card " + cardCounter).transform);
+        GameObject newCard = Instantiate(cardPrefab, GameObject.Find("Player " + playerId + " Card " + cardCounter).transform.position, Quaternion.identity, GameObject.Find("Player " + playerId + " Card " + cardCounter).transform);
         cardsinHand.Add(newCard);
-        cardCounter++;
         newCard.GetComponent<carddisplay>().cardData = cardData;
     }
 }

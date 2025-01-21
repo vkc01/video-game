@@ -7,10 +7,12 @@ using UnityEngine.InputSystem;
 public class Selection : MonoBehaviour
 {
     public Animator SelectingCards;
+    public handmanager handManager;
     int whereSelector;
     bool movableSelector;
     GameObject cardType;
     string cardData;
+    int playerTurn;
     void Start()
     {
         whereSelector = 1;
@@ -21,10 +23,30 @@ public class Selection : MonoBehaviour
     {
         movableSelector = false;
         SelectingCards.SetTrigger("disappear");
+        //playerTurn = handManager.playerId;
         if (whereSelector == 1)
         {
-            cardType = GameObject.Find("/Player 2/Card 1/Card Prefab(Clone)");
-            cardData = cardType.GetComponent<carddisplay>().cardData.cardName;
+            cardType = GameObject.Find("/Cards Canvas/Player 1/Hand/Player 1 Card 1/Card Prefab(Clone)");
+            cardData = cardType.GetComponent<carddisplay>().cardData.cardDesc;
+            Debug.Log(cardData);
+        }
+        if (whereSelector == 2)
+        {
+            cardType = GameObject.Find("/Cards Canvas/Player 1/Hand/Player 1 Card 2/Card Prefab(Clone)");
+            cardData = cardType.GetComponent<carddisplay>().cardData.cardDesc;
+            Debug.Log(cardData);
+        }
+        if (whereSelector == 3)
+        {
+            cardType = GameObject.Find("/Cards Canvas/Player 1/Hand/Player 1 Card 3/Card Prefab(Clone)");
+            cardData = cardType.GetComponent<carddisplay>().cardData.cardDesc;
+            Debug.Log(cardData);
+        }
+        if (whereSelector == 4)
+        {
+            cardType = GameObject.Find("/Cards Canvas/Player 1/Hand/Player 1 Card 4/Card Prefab(Clone)");
+            cardData = cardType.GetComponent<carddisplay>().cardData.cardDesc;
+            Debug.Log(cardData);
         }
         StartCoroutine(ReappearInOne());
     }
