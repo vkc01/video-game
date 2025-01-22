@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
+using TMPro;
+using UnityEngine.UI;
 
 public class Selection : MonoBehaviour
 {
     public Animator SelectingCards;
     public handmanager handManager;
+    public TextMeshProUGUI cardDesc;
     int whereSelector;
     bool movableSelector;
     GameObject cardType;
@@ -54,6 +57,7 @@ public class Selection : MonoBehaviour
             Debug.Log(cardData);
         }
 
+        cardDesc.text = "Selected card is " + cardData + " type";
         StartCoroutine(ReappearInOne());
     }
     public IEnumerator ReappearInOne()
