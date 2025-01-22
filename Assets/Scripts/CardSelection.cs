@@ -12,42 +12,48 @@ public class Selection : MonoBehaviour
     bool movableSelector;
     GameObject cardType;
     string cardData;
-    int playerTurn = 1;
+    int playerTurn;
     void Start()
     {
+        playerTurn = 1;
         whereSelector = 1;
         SelectingCards.SetTrigger("startingposition");
         movableSelector = true;
     }
     void OnSpace(InputValue value)
     {
+        if (!movableSelector)
+        {
+            return;
+        }
         movableSelector = false;
         SelectingCards.SetTrigger("disappear");
-        //playerTurn = handManager.playerId;
+        SelectingCards.SetTrigger("player"+ playerTurn + "end");
         if (whereSelector == 1)
         {
-            cardType = GameObject.Find("/Cards Canvas/Player 1/Hand/Player 1 Card 1/Card Prefab(Clone)");
+            cardType = GameObject.Find("/Cards Canvas/Player " + playerTurn + "/Hand/Player " + playerTurn + " Card 1/Card Prefab(Clone)");
             cardData = cardType.GetComponent<carddisplay>().cardData.cardDesc;
             Debug.Log(cardData);
         }
         if (whereSelector == 2)
         {
-            cardType = GameObject.Find("/Cards Canvas/Player 1/Hand/Player 1 Card 2/Card Prefab(Clone)");
+            cardType = GameObject.Find("/Cards Canvas/Player " + playerTurn + "/Hand/Player " + playerTurn + " Card 2/Card Prefab(Clone)");
             cardData = cardType.GetComponent<carddisplay>().cardData.cardDesc;
             Debug.Log(cardData);
         }
         if (whereSelector == 3)
         {
-            cardType = GameObject.Find("/Cards Canvas/Player 1/Hand/Player 1 Card 3/Card Prefab(Clone)");
+            cardType = GameObject.Find("/Cards Canvas/Player " + playerTurn + "/Hand/Player " + playerTurn + " Card 3/Card Prefab(Clone)");
             cardData = cardType.GetComponent<carddisplay>().cardData.cardDesc;
             Debug.Log(cardData);
         }
         if (whereSelector == 4)
         {
-            cardType = GameObject.Find("/Cards Canvas/Player 1/Hand/Player 1 Card 4/Card Prefab(Clone)");
+            cardType = GameObject.Find("/Cards Canvas/Player " + playerTurn + "/Hand/Player " + playerTurn + " Card 4/Card Prefab(Clone)");
             cardData = cardType.GetComponent<carddisplay>().cardData.cardDesc;
             Debug.Log(cardData);
         }
+
         StartCoroutine(ReappearInOne());
     }
     public IEnumerator ReappearInOne()
@@ -55,6 +61,11 @@ public class Selection : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         SelectingCards.SetTrigger("TPtoOne");
         whereSelector = 1;
+        if (playerTurn == 4)
+        {
+            playerTurn = 0;
+        }
+        playerTurn++;
         movableSelector = true;
     }
     void OnOne(InputValue value)
