@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class Selection : MonoBehaviour
 {
     public Animator SelectingCards;
-    public handmanager handManager;
+    public Animator PlayerLabels;
+    public Animator PlayerTurn;
     public TextMeshProUGUI cardDesc;
     int whereSelector;
     bool movableSelector;
@@ -63,7 +64,8 @@ public class Selection : MonoBehaviour
     public IEnumerator ReappearInOne()
     {
         yield return new WaitForSecondsRealtime(1f);
-        SelectingCards.SetTrigger("TPtoOne");
+        Debug.Log("Reappear");
+        //SelectingCards.SetTrigger("TPtoOne");
         whereSelector = 1;
         if (playerTurn == 4)
         {
