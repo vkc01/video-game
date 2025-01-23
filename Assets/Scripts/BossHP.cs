@@ -1,14 +1,15 @@
 using UnityEngine;
+using TMPro;
 
 public class BossHP : MonoBehaviour
 {
     bool isBlinded;
     bool isPoisoned;
     int countdown;
-    //int PoisonedDMG;
+    public int PoisonedDMG;
     void Start()
     {
-        //PoisonedDMG = 0;
+        PoisonedDMG = 0;
         isPoisoned = false;
         isBlinded = false;
     }
@@ -26,10 +27,11 @@ public class BossHP : MonoBehaviour
         if (isPoisoned)
         {
             countdown--;
-            //PoisonedDMG = 1;
+            PoisonedDMG = 1;
         }
         if (countdown == 0)
         {
+            PoisonedDMG = 0;
             isPoisoned = false;
         }
         if (isBlinded)

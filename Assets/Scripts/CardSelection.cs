@@ -32,7 +32,8 @@ public class Selection : MonoBehaviour
         }
         movableSelector = false;
         SelectingCards.SetTrigger("disappear");
-        SelectingCards.SetTrigger("player"+ playerTurn + "end");
+        PlayerTurn.SetTrigger("player"+ playerTurn + "end");
+        PlayerLabels.SetTrigger("player"+ playerTurn + "end");
         if (whereSelector == 1)
         {
             cardType = GameObject.Find("/Cards Canvas/Player " + playerTurn + "/Hand/Player " + playerTurn + " Card 1/Card Prefab(Clone)");
@@ -64,8 +65,7 @@ public class Selection : MonoBehaviour
     public IEnumerator ReappearInOne()
     {
         yield return new WaitForSecondsRealtime(1f);
-        Debug.Log("Reappear");
-        //SelectingCards.SetTrigger("TPtoOne");
+        SelectingCards.SetTrigger("TPtoOne");
         whereSelector = 1;
         if (playerTurn == 4)
         {
