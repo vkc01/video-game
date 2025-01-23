@@ -52,6 +52,8 @@ public class MenuMovement : MonoBehaviour
                 allelements.SetTrigger("mainscreentocreditsscreen");
                 selector.SetTrigger("selector-maintocredits");
                 wherePlayer = "credits";
+                whereSelector = "main";
+                return;
             }
             if (whereSelector == "title") // main to title screen
             {
