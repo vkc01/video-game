@@ -4,6 +4,7 @@ using System.Collections;
 using System.Numerics;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class MenuMovement : MonoBehaviour
 {
@@ -17,7 +18,15 @@ public class MenuMovement : MonoBehaviour
         wherePlayer = "title";
         whereSelector = "play";
         movingselector = 0;
+        StartCoroutine(StartGame());
     }
+
+    public IEnumerator StartGame()
+    {
+        yield return new WaitForSecondsRealtime(3.9f);
+        allelements.SetTrigger("startgame");
+    }
+
     void OnSpace(InputValue value)
     {
         if (wherePlayer == "title") // goes from title to main

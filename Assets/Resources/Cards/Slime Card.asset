@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Slime
   cardType: 03000000
-  cardImage: {fileID: 368543389579951487, guid: 2040fb75e5310ed44ad6b6ed0f8fa78e, type: 3}
+  cardImage: {fileID: -567815931973069552, guid: ed03d0f43ab1a014b8748e03dfc01d13, type: 3}
   cardDesc: Poison
